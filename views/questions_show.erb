@@ -1,0 +1,23 @@
+<h3><%= @question.content %></h3>
+Posted by <%= @user.username %>
+
+<% @answers.each do |answer| %>
+ <div>
+   <%= answer.id %>
+   <%= answer.option %>
+
+   <form class="" action="/questions/<%= @question.id %>" method="post">
+     <button>vote</button>
+   </form>
+
+ </div>
+<% end %>
+
+<br>
+<br>
+<br>
+
+<form class="" action="/questions/<%= @question.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>delete question</button>
+</form>

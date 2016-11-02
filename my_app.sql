@@ -13,6 +13,13 @@ CREATE TABLE questions (
   content TEXT
 );
 
+ALTER TABLE questions ADD user_id INTEGER;
 
--- Manually inserting a question in the Database
-INSERT INTO questions (content) VALUES ('What laptop should I buy for web development?');
+
+CREATE TABLE answers (
+  id SERIAL4 PRIMARY KEY,
+  options TEXT,
+  question_id INTEGER
+);
+
+ALTER TABLE answers ADD vote INTEGER;
