@@ -23,3 +23,10 @@ CREATE TABLE answers (
 );
 
 ALTER TABLE answers ADD vote INTEGER;
+
+CREATE TABLE user_vote (
+  id SERIAL4 PRIMARY Key,
+  user_id INTEGER,
+  question_id INTEGER,
+  answer_id INTEGER
+);

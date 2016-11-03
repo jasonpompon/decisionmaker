@@ -1,4 +1,5 @@
-
-<% @questions.each do |question| %>
- <p><a href="/questions/<%= question.id %>"><%= question.content %></a></p>
-<% end %>
+<div class='question_display'>
+  <% @questions.each do |question| %>
+   <p><a href="/questions/<%= question.id %>"><%= question.content %></a></p>
+  <% end %>
+</div>

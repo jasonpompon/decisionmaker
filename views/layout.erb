@@ -3,31 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>DecisionMaker</title>
+  <link <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
   <link rel='stylesheet' href='/stylesheets/main.css'>
 </head>
 <body>
-  <h1>DecisionMaker</h1>
-
-
-  <% if logged_in? %>
-    logged in as <%= current_user.username %> <a href="/users/<%= current_user.id %>">Show me all my questions!</a>
-  <form action="/session" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>logout</button>
-  </form>
-  <% end %>
-
-  <div class="">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/questions/new">New Question</a></li>
-      <% if !logged_in? %>
-      <li><a href="/users/new">New User</a></li>
-      <% end %>
+  <div>
+    <ul class="topnav">
+      <div class="wrapper">
+        <li><a href="/">Home</a></li>
+        <li><a href="/questions/new">New Question</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">About</a></li>
+      </div>
     </ul>
   </div>
 
+  <div class="wrapper">
+    <h1>Decision<span>Maker</span></h1>
 
-  <%= yield %>
+    <section id='login'>
+      <% if logged_in? %>
+        <div>
+          logged in as: <%= current_user.username %>
+        </div>
+        <a href="/users/<%= current_user.id %>">Show me all my questions!</a>
+        <form action="/session" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button id='logout'>logout</button>
+        </form>
+      <% else %>
+        <a href="/session/new">log in</a> / <a href="/users/new">sign up</a>
+      <% end %>
+    </section>
+  </div>
 
+  <div class="wrapper" id='content'>
+    <%= yield %>
+  </div>
+
+
+  <footer class="wrapper">site designed by <a href="https://twitter.com/jasonpompon">jasonpompon</a></footer>
 </body>

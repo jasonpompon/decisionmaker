@@ -1,23 +1,30 @@
-<h3><%= @question.content %></h3>
-Posted by <%= @user.username %>
+<div class='question_display'>
 
-<% @answers.each do |answer| %>
- <div>
-   <%= answer.id %>
-   <%= answer.option %>
+  <h3><%= @question.content %><br><span class='posted'>Posted by: <%= @user.username %></span></h3>
+
 
    <form class="" action="/questions/<%= @question.id %>" method="post">
-     <button>vote</button>
-   </form>
+    <% @answers.each do |answer| %>
+     <div class="options">
 
- </div>
-<% end %>
+       <input type="radio" name="option" value="<%= answer.id %>"><%= answer.option %> ----> <%= answer.vote %><br>
 
-<br>
-<br>
-<br>
 
-<form class="" action="/questions/<%= @question.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>delete question</button>
-</form>
+     </div>
+    <% end %>
+    <button>VOTE</button>
+  </form>
+
+
+  <br>
+
+  <div class="">
+    Delete Question
+    <form class="" action="/questions/<%= @question.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <!-- <button>delete question</button> -->
+      <input type="submit" id="delete" name="submit" alt="search" value="">
+    </form>
+  </div>
+
+</div>

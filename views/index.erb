@@ -1,6 +1,6 @@
 
 <% @questions.each do |question| %>
 
-  <p><a href="/questions/<%= question.id %>"><%= question.content %></a></p>
+<p class='question_display'> &clubs; <a href="/questions/<%= question.id %>"><%= question.content %></a> <br><span class='posted'>posted by <%= User.find_by(id: question.user_id).username %> on <span class='timestamp'><%= question.time %></span></span></p>
 
 <% end %>

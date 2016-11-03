@@ -26,7 +26,7 @@ get '/' do
 end
 
 get '/questions/new' do
-  redirect to '/session/new' unless logged_in?
+  redirect to '/session/new_question' unless logged_in?
   erb :questions_new
 end
 
@@ -38,22 +38,22 @@ post '/questions' do
     answer1 = Answer.new
     answer1.option = params[:option1]
     answer1.question_id = question.id
-    answer1.vote = 0
+    # answer1.vote = 0
     answer1.save
     answer2 = Answer.new
     answer2.option = params[:option2]
     answer2.question_id = question.id
-    answer2.vote = 0
+    # answer2.vote = 0
     answer2.save
     answer3 = Answer.new
     answer3.option = params[:option3]
     answer3.question_id = question.id
-    answer3.vote = 0
+    # answer3.vote = 0
     answer3.save
     answer4 = Answer.new
     answer4.option = params[:option4]
     answer4.question_id = question.id
-    answer4.vote = 0
+    # answer4.vote = 0
     answer4.save
     redirect to '/'
   else
@@ -87,7 +87,7 @@ post '/session' do
 
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect to '/questions/new'
+    redirect to '/'
   else
     erb :sessions_new
   end
@@ -100,7 +100,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  @answers = Answer.where(question_id: params[:id])
+  @answers = Answer.where(question_id: @question.id).order('id')
   @user = User.find(@question.user_id)
   erb :questions_show
 end
@@ -118,8 +118,33 @@ get '/users/:id' do
 end
 
 post '/questions/:id' do
-  questions = Question.find(params[:id])
-  answer = Answer.where(question_id: questions.id)
-
-  redirect to '/'
+  question = Question.find(params[:id])
+  answer = Answer.where(question_id: question.id)
+  option = answer.find_by(id: params[:option])
+  option.update(vote: (option.vote + 1))
+  redirect to "/questions/#{params[:id]}"
 end
+
+get '/session/new_question' do
+  erb :sessions_new_question
+end
+
+post '/session_question' do
+  user = User.find_by(username: params[:username])
+
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect to '/questions/new'
+  else
+    erb :sessions_new
+  end
+end
+
+# still left TODO:
+
+
+# 3 add some css to make it look presentable
+# 5 deploy to test if its working online
+# 6 when I delete question delete its answers as werll
+# 7 if have time add categories and comments
+# 8 style the buttons and input boxes

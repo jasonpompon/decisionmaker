@@ -1,7 +1,124 @@
+body {
+  /*background-color: beige;*/
+  margin: 0;
+  font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+}
+
 h1 {
-  color: blue;
+  color: #2a2a2a;
+  font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+  font-size: 2.75em;
+  display: inline;
+  padding-left: 30px;
+  /*float: right;*/
+}
+
+p {
+  font-size: 1.15em;
+}
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 span {
+  color: tomato;
+  font-family: 'Love Ya Like A Sister', cursive;
+
 }
 
 label {
   display: block;
+}
+
+.topnav li {
+  display: inline;
+  margin: 10px;
+  padding: 10px;
+}
+
+.topnav {
+  background-color: #2a2a2a;
+  padding: 10px;
+  margin-top: 0px;
+}
+
+ul a {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: tomato;
+}
+
+a:hover {
+  color: firebrick;
+}
+
+ul li:hover {
+  background-color: dimgrey;
+}
+
+ul li a:hover {
+  color: white;
+}
+
+/*#logout {
+  display: inline-block;
+}*/
+
+#login {
+  text-align: right;
+  /*line-height: 100px;*/
+  /*float: right;*/
+  position: relative;
+  bottom: 50px;
+}
+
+.question_display {
+  padding: 20px;
+  line-height: 27px;
+  border-bottom: lightgrey solid 1px;
+}
+
+.options {
+  padding: 20px;
+}
+
+#delete {
+  background:url(../images/ic_delete_sweep_black_24dp_1x.png);
+  background-repeat: no-repeat;
+  width:40px;
+  height:40px;
+  border: 0;
+}
+
+#delete:hover {
+  background:url(../images/ic_delete_sweep_black_24dp_2x.png);
+}
+
+.posted {
+  font-size: 0.7em;
+  font-weight: normal;
+  color: grey;
+  margin-left: 20px;
+}
+
+footer {
+  text-align: center;
+  font-weight: bold;
+  padding: 30px;
+  clear: both;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: grey;
+  font-style: italic;
+}
+
+button {
+  width: 80px;
+  height: 21px;
 }
