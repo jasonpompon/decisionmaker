@@ -126,3 +126,7 @@ button {
 em {
   font-weight: bold;
 }
+
+#votes {
+  font-weight: bold;
+}
