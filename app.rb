@@ -171,4 +171,3 @@ end
 
 # still left TODO:
 # 4 don't let a user to vote more than onece on a question
-# 5 deploy to test if its working online

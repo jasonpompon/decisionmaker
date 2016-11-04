@@ -1,17 +1,27 @@
-<form class='question_display' action="/questions" method="post">
+<div class="question_display">
 
-  <label for="">Write a question</label>
-  <textarea name="content" rows="4" cols="50"></textarea>
+  <h3>Create your new question</h3>
 
-  <label for="">Option 1</label>
-  <textarea name="option1" rows="1" cols="50"></textarea>
-  <label for="">Option 2</label>
-  <textarea name="option2" rows="1" cols="50"></textarea>
-  <label for="">Option 3</label>
-  <textarea name="option3" rows="1" cols="50"></textarea>
-  <label for="">Option 4</label>
-  <textarea name="option4" rows="1" cols="50"></textarea>
+  <p>
+    Write a question and give it 4 options so that other users can vote on them.
+  </p>
+  
+  <form class='' action="/questions" method="post">
 
-  <button>Submit</button>
+    <label for="">Write a question</label>
+    <textarea name="content" rows="4" cols="50"></textarea>
 
-</form>
+    <label for="">Option 1</label>
+    <textarea name="option1" rows="1" cols="50"></textarea>
+    <label for="">Option 2</label>
+    <textarea name="option2" rows="1" cols="50"></textarea>
+    <label for="">Option 3</label>
+    <textarea name="option3" rows="1" cols="50"></textarea>
+    <label for="">Option 4</label>
+    <textarea name="option4" rows="1" cols="50"></textarea>
+
+    <button>Submit</button>
+
+  </form>
+
+</div>

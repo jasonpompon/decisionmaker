@@ -10,21 +10,20 @@ CREATE TABLE users (
 CREATE TABLE questions (
   id SERIAL4 PRIMARY KEY,
   content TEXT,
+  time TIMESTAMP,
   user_id INTEGER
 );
 
 CREATE TABLE answers (
   id SERIAL4 PRIMARY KEY,
-  options TEXT,
+  option TEXT,
   question_id INTEGER,
   vote INTEGER
 );
 
-ALTER TABLE answers ADD vote INTEGER;
 
 CREATE TABLE user_votes (
   id SERIAL4 PRIMARY Key,
   user_id INTEGER,
-  question_id INTEGER,
   answer_id INTEGER
 );
