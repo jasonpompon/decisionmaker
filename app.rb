@@ -4,6 +4,7 @@ require_relative 'db_config'
 require_relative 'models/question'
 require_relative 'models/user'
 require_relative 'models/answer'
+require_relative 'models/user_vote'
 require 'pry'
 
 enable :sessions
@@ -106,8 +107,12 @@ get '/questions/:id' do
 end
 
 delete '/questions/:id' do
-  @question = Question.find(params[:id])
-  @question.destroy
+  question = Question.find(params[:id])
+  question.destroy
+  answers = Answer.where(question_id: question.id)
+  answers.each do |answer|
+   answer.destroy
+  end
   redirect to '/'
 end
 
@@ -118,10 +123,16 @@ get '/users/:id' do
 end
 
 post '/questions/:id' do
+  redirect to '/session/new_vote' unless logged_in?
   question = Question.find(params[:id])
   answer = Answer.where(question_id: question.id)
   option = answer.find_by(id: params[:option])
   option.update(vote: (option.vote + 1))
+  # if
+  user = User_vote.new
+  user.user_id = current_user.id
+  user.answer_id = option.id
+  user.save
   redirect to "/questions/#{params[:id]}"
 end
 
@@ -140,11 +151,25 @@ post '/session_question' do
   end
 end
 
+get '/session/new_vote' do
+  erb :sessions_vote
+end
+
+post '/session_vote' do
+  user = User.find_by(username: params[:username])
+
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect to '/'
+  else
+    erb :sessions_new
+  end
+end
+
+get '/how_it_works' do
+  erb :about
+end
+
 # still left TODO:
-
-
-# 3 add some css to make it look presentable
+# 4 don't let a user to vote more than onece on a question
 # 5 deploy to test if its working online
-# 6 when I delete question delete its answers as werll
-# 7 if have time add categories and comments
-# 8 style the buttons and input boxes

@@ -1,4 +1,7 @@
+
 <div class='question_display'>
+  <h3>All Post from <%= @user.username %></h3>
+
   <% @questions.each do |question| %>
    <p><a href="/questions/<%= question.id %>"><%= question.content %></a></p>
   <% end %>
