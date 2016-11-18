@@ -35,26 +35,37 @@ post '/questions' do
   question.content = params[:content]
   question.user_id = current_user.id
   if question.save
-    answer1 = Answer.new
-    answer1.option = params[:option1]
-    answer1.question_id = question.id
-    # answer1.vote = 0
-    answer1.save
-    answer2 = Answer.new
-    answer2.option = params[:option2]
-    answer2.question_id = question.id
-    # answer2.vote = 0
-    answer2.save
-    answer3 = Answer.new
-    answer3.option = params[:option3]
-    answer3.question_id = question.id
-    # answer3.vote = 0
-    answer3.save
-    answer4 = Answer.new
-    answer4.option = params[:option4]
-    answer4.question_id = question.id
-    # answer4.vote = 0
-    answer4.save
+
+# add the rest here
+    answers = [params[:option1], params[:option2]]
+
+    answers.each do |option|
+      newAnswer = Answer.new
+      answer1.option = params[option]
+      answer1.question_id = question.id
+      answer.save
+    end
+    #
+    # answer1 = Answer.new
+    # answer1.option = params[:option1]
+    # answer1.question_id = question.id
+    # # answer1.vote = 0
+    # answer1.save
+    # answer2 = Answer.new
+    # answer2.option = params[:option2]
+    # answer2.question_id = question.id
+    # # answer2.vote = 0
+    # answer2.save
+    # answer3 = Answer.new
+    # answer3.option = params[:option3]
+    # answer3.question_id = question.id
+    # # answer3.vote = 0
+    # answer3.save
+    # answer4 = Answer.new
+    # answer4.option = params[:option4]
+    # answer4.question_id = question.id
+    # # answer4.vote = 0
+    # answer4.save
     redirect to '/'
   else
     erb :questions_new
