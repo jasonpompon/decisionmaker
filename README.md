@@ -1,5 +1,7 @@
 # Decision Maker
 
+[Live version](https://thawing-garden-84646.herokuapp.com
+
 ## 1) Goal
 To create an app where, if users have a decision to make and they have some options the can't decide between them, they can post a question then other users can vote on these options to help the original poster to make the right decision.
 
